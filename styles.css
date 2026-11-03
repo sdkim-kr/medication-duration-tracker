@@ -1,0 +1,407 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  color: #1a1a1a;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.status {
+  text-align: center;
+  min-height: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2d6a4f;
+  font-weight: 600;
+}
+
+.status.error {
+  color: #d32f2f;
+}
+
+.status:empty {
+  display: none;
+}
+
+/* 입력 수단 선택 */
+.input-choice {
+  margin-bottom: 1.5rem;
+}
+
+.choice-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.choice-button {
+  flex: 1;
+  padding: 0.9rem 0.5rem;
+  border: 2px solid #d0d7de;
+  border-radius: 10px;
+  background: #f6f8fa;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.choice-button:hover {
+  border-color: #2193b0;
+}
+
+.choice-button[aria-pressed="true"] {
+  border-color: #2193b0;
+  background: #e3f2fd;
+  font-weight: 700;
+}
+
+/* 패널 공통 */
+.panel {
+  border-top: 1px solid #eee;
+  padding-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.panel.hidden {
+  display: none;
+}
+
+.panel-hint {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.primary-button {
+  flex: 1;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  background: #2193b0;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary-button:hover {
+  background: #1b7a91;
+}
+
+.secondary-button {
+  flex: 1;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.voice-state {
+  margin-top: 0.75rem;
+  color: #555;
+  min-height: 1.25rem;
+}
+
+/* 폼 */
+.text-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.field-optional {
+  font-weight: 400;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.field-input {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #2193b0;
+  box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2);
+}
+
+.field-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.field-error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  min-height: 1rem;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.confirm-source {
+  font-size: 0.85rem;
+  color: #2193b0;
+  margin-bottom: 0.75rem;
+}
+
+/* 기록 목록 */
+.records-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.records-list:empty::after {
+  content: "아직 저장된 기록이 없습니다.";
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.records-list li {
+  padding: 0.75rem;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  background: #fafbfc;
+  font-size: 0.9rem;
+}
+
+/* 분석/비교 결과 영역 */
+.result-box {
+  margin-top: 1rem;
+  min-height: 1rem;
+}
+
+.result-box:empty {
+  display: none;
+}
+
+/* 통계 카드 (분석 결과 및 비교의 약물별 카드) */
+.stat-card {
+  border: 1px solid #e0e6eb;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  background: #fafbfc;
+}
+
+.stat-card + .stat-card {
+  margin-top: 0.75rem;
+}
+
+.stat-card__name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #1b7a91;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  padding: 0.2rem 0;
+}
+
+.stat-row__label {
+  color: #555;
+}
+
+.stat-row__value {
+  font-weight: 600;
+}
+
+/* 데이터 부족 / 집계 불가 상태 표시 */
+.stat-status {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stat-status--insufficient {
+  background: #fff3cd;
+  color: #8a6d00;
+}
+
+.stat-status--empty {
+  background: #f1f1f1;
+  color: #777;
+}
+
+.stat-status--ok {
+  background: #e3f6ec;
+  color: #2d6a4f;
+}
+
+.result-guidance {
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: #fff3cd;
+  color: #8a6d00;
+  font-size: 0.88rem;
+}
+
+.result-empty {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* 비교 약물 선택 체크박스 묶음 */
+.comparison-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.comparison-choices .inline-check {
+  font-size: 0.9rem;
+}
+
+.comparison-choices .result-empty {
+  margin: 0;
+}
+
+/* 비교 카드를 나란히(가로) 배치, 좁은 화면에서는 세로 */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.comparison-grid .stat-card + .stat-card {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   PWA / 모바일 보강 (Task: 핸드폰 실행)
+   --------------------------------------------------------------------------- */
+
+/* iOS 노치/홈 인디케이터 세이프 에어리어 대응 */
+body {
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* 설치형(standalone)으로 실행될 때는 카드 테두리를 줄여 전체화면 느낌을 준다 */
+@media (display-mode: standalone) {
+  body {
+    background: #ffffff;
+    align-items: stretch;
+  }
+  .app {
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+/* 좁은 화면에서 패딩·버튼 터치 영역 최적화 */
+@media (max-width: 420px) {
+  .app {
+    padding: 1.25rem;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+  .choice-button {
+    padding: 1rem 0.5rem;
+  }
+  .primary-button,
+  .secondary-button {
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* 터치 입력에서 최소 44px 타깃 보장 (접근성) */
+.choice-button,
+.primary-button,
+.secondary-button {
+  min-height: 44px;
+}
+
+.app-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+}

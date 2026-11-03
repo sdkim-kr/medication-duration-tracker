@@ -1,0 +1,16 @@
+{
+  "name": "medication-duration-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "약물지속시간 추적기 (Medication Duration Tracker) - 학습·취업 준비용",
+  "scripts": {
+    "test": "vitest --run",
+    "start": "python3 -m http.server 8000 --bind 0.0.0.0",
+    "serve": "npx --yes serve -l 8000 ."
+  },
+  "devDependencies": {
+    "fast-check": "^3.23.1",
+    "vitest": "^2.1.8"
+  }
+}

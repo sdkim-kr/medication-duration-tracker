@@ -1,0 +1,12 @@
+# 의존성
+node_modules/
+
+# Kiro spec / 작업 산출물 (공개 제외)
+.kiro/
+briefs/
+ health-brief-power/
+health-brief-power/
+
+# 로컬 환경
+.DS_Store
+*.log

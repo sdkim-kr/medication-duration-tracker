@@ -1,0 +1,20 @@
+{
+  "name": "약물지속시간 추적기",
+  "short_name": "약물추적기",
+  "description": "학습·취업 준비용 약물 효과 지속 시간 기록·분석 도구",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2193b0",
+  "theme_color": "#2193b0",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
